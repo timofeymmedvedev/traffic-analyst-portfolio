@@ -1,0 +1,45 @@
+table,field,type,description,analytics_use
+traffic_performance_daily,date,DATE,Дата,Временной срез. Группировка по неделям/месяцам.
+traffic_performance_daily,source,STRING,Источник трафика,Сравнение каналов по эффективности.
+traffic_performance_daily,campaign,STRING,Название кампании,A/B сравнение кампаний внутри источника.
+traffic_performance_daily,geo,STRING,Страна (ISO-2),"GEO-анализ, сравнение тиров."
+traffic_performance_daily,tier,STRING,Тир GEO (T1/T2/T3),Сегментация по платёжеспособности.
+traffic_performance_daily,impressions,INT,Показы рекламы,"CPM, охват аудитории."
+traffic_performance_daily,clicks,INT,Клики,"CTR, CPC, начало воронки."
+traffic_performance_daily,ctr,FLOAT,Click-Through Rate = clicks/impressions,Качество креатива/таргетинга.
+traffic_performance_daily,spend,FLOAT,Расходы на рекламу в USD,"CPA, ROI, ROAS."
+traffic_performance_daily,cpc,FLOAT,Cost Per Click = spend/clicks,Стоимость привлечения внимания.
+traffic_performance_daily,registrations,INT,Количество регистраций,c2r — конверсия клик→рег.
+traffic_performance_daily,ftd,INT,First Time Deposits — первые депозиты,"CPA, FTD Rate (r2d), ROI."
+traffic_performance_daily,c2r,FLOAT,Click-to-Registration = reg/clicks,Конверсия верха воронки.
+traffic_performance_daily,r2d,FLOAT,Registration-to-Deposit = ftd/reg,Конверсия низа воронки.
+traffic_performance_daily,ngr,FLOAT,Net Gaming Revenue в USD,"ROI, ROAS, окупаемость трафика."
+traffic_performance_daily,cpa,FLOAT,Cost Per Acquisition = spend/ftd,Стоимость привлечения игрока.
+traffic_performance_daily,roi_pct,FLOAT,ROI = (ngr-spend)/spend*100,Окупаемость рекламных вложений.
+traffic_performance_daily,fraud_clicks,INT,Подозрительные клики,Доля фрода в трафике.
+traffic_performance_daily,approval_rate,FLOAT,Доля подтверждённых конверсий,Качество трафика от оператора.
+players,player_id,STRING,Уникальный ID игрока,"JOIN с deposits, cohort."
+players,source,STRING,Источник привлечения,Attribution — какой канал привёл игрока.
+players,campaign,STRING,Кампания привлечения,Attribution на уровне кампании.
+players,geo,STRING,Страна игрока,GEO-сегментация LTV.
+players,reg_date,DATE,Дата регистрации,Когортный анализ по дате регистрации.
+players,ftd_date,DATE,Дата первого депозита,"Когортный анализ по FTD, дни до FTD."
+players,ftd_amount,FLOAT,Сумма первого депозита,"Средний чек, ARPU, LTV proxy."
+players,device,STRING,Устройство (mobile/desktop/tablet),Device split анализ.
+players,is_fraud,INT,Флаг фрода (0/1),Исключение из расчётов LTV/NGR.
+player_deposits,player_id,STRING,ID игрока,JOIN с players.
+player_deposits,deposit_date,DATE,Дата депозита,Временной анализ монетизации.
+player_deposits,deposit_num,INT,Порядковый номер депозита,"Redeposit rate, num deposits."
+player_deposits,amount,FLOAT,Сумма депозита в USD,"LTV, ARPU, ARPPU, NGR."
+player_deposits,is_ftd,INT,Флаг первого депозита (1=FTD),Разделение FTD и редепозитов.
+player_deposits,days_since_ftd,INT,Дней с момента FTD,"Retention анализ, LTV кривые."
+cohort_metrics,cohort_month,STRING,Месяц когорты (YYYY-MM),Когортное сравнение.
+cohort_metrics,source,STRING,Источник трафика когорты,Качество трафика по каналам.
+cohort_metrics,n_ftd,INT,Размер когорты (кол-во FTD),Нормировка метрик.
+cohort_metrics,cac,FLOAT,Cost per FTD для когорты,Окупаемость каждой когорты.
+cohort_metrics,retention_d1_pct,FLOAT,"% игроков, вернувшихся на D1",Краткосрочное удержание.
+cohort_metrics,retention_d30_pct,FLOAT,"% игроков, вернувшихся на D30",Среднесрочное удержание.
+cohort_metrics,ltv_30d,FLOAT,LTV через 30 дней (NGR/player),Окупаемость по когортам.
+cohort_metrics,ltv_90d,FLOAT,LTV через 90 дней,Долгосрочная окупаемость.
+cohort_metrics,payback_days_est,FLOAT,Оценочный срок окупаемости (дней),Payback period per source.
+cohort_metrics,roi_pct,FLOAT,ROI когорты,Итоговая оценка эффективности канала.
